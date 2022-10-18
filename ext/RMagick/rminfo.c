@@ -2388,7 +2388,14 @@ Info_initialize(VALUE self)
 {
     if (rb_block_given_p())
     {
-        rb_yield(self);
+        if (rb_proc_arity(rb_block_proc()) == 0)
+        {
+            rb_obj_instance_eval(0, NULL, self);
+        }
+        else
+        {
+            rb_yield(self);
+        }
     }
     return self;
 }

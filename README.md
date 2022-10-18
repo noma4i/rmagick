@@ -1,3 +1,5 @@
+# PRE-DEPRECATIONS REMOVED BRANCH
+
 RMagick
 =======
 

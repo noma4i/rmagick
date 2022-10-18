@@ -444,7 +444,14 @@ ImageList_montage(VALUE self)
     montage_obj = rm_montage_new();
     if (rb_block_given_p())
     {
-        rb_yield(montage_obj);
+        if (rb_proc_arity(rb_block_proc()) == 0)
+        {
+            rb_obj_instance_eval(0, NULL, montage_obj);
+        }
+        else
+        {
+            rb_yield(montage_obj);
+        }
     }
 
     Data_Get_Struct(montage_obj, Montage, montage);
